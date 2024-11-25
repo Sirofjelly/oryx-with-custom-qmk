@@ -22,6 +22,7 @@
 #define CH_RPRN S(KC_9)
 #define CH_QST S(KC_MINS)
 #define CH_DLR KC_NUHS
+#define KC_MAC_CUT LGUI(KC_X)
 #define KC_MAC_COPY LGUI(KC_C)
 #define KC_MAC_PASTE LGUI(KC_V)
 #define CH_PLUS S(KC_1)
