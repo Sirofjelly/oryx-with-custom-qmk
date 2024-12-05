@@ -176,6 +176,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return false;
   }
+  if ((keycode == LT(1,KC_SPACE) || keycode == MO(2)) && mac_mode == false) {
+    if (record->event.pressed) {
+      if (record->tap.count > 0 && !record->tap.interrupted) {
+        if (keycode == LT(1,KC_SPACE)) {
+          tap_code(KC_SPACE);
+        else {
+          return false;
+        }
+      } else {
+        layer_on(keycode == LT(1,KC_SPACE) ? 4 : 5);
+      }
+    } else {
+      layer_off(keycode == LT(1,KC_SPACE) ? 4 : 5);
+    }
+    return false;
+  }
   switch (keycode) {
     case MAC_WIN_TOGGLE:
       if (record->event.pressed) {
