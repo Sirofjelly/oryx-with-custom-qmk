@@ -181,7 +181,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->tap.count > 0 && !record->tap.interrupted) {
         if (keycode == LT(1,KC_SPACE)) {
           tap_code(KC_SPACE);
-        else {
+        } else {
           return false;
         }
       } else {
