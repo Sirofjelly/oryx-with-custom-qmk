@@ -176,7 +176,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return false;
   }
-  if ((keycode == LT(1,KC_SPACE) || keycode == MO(2)) && mac_mode == false) {
+  if ((keycode == LT(1,KC_SPACE)) && mac_mode == false) {
     if (record->event.pressed) {
       if (record->tap.count > 0 && !record->tap.interrupted) {
         if (keycode == LT(1,KC_SPACE)) {
