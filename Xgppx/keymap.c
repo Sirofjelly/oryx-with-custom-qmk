@@ -160,35 +160,32 @@ bool rgb_matrix_indicators_user(void) {
 bool mac_mode = true;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if ((keycode == LT(1, KC_BSPC) || keycode == LT(2, KC_ENTER)) && mac_mode == false) {
+  if ((keycode == LT(1, KC_BSPC) || keycode == LT(1,KC_SPACE)) && mac_mode == false) {
     if (record->event.pressed) {
       if (record->tap.count > 0 && !record->tap.interrupted) {
         if (keycode == LT(1, KC_BSPC)) {
           tap_code(KC_BSPC);
-        } else {
-          tap_code(KC_ENTER);
+        }
+         else {
+          tap_code(KC_SPACE);
         }
       } else {
-        layer_on(keycode == LT(1, KC_BSPC) ? 4 : 5);
+        layer_on(4);
       }
     } else {
-      layer_off(keycode == LT(1, KC_BSPC) ? 4 : 5);
+      layer_off(4);
     }
     return false;
   }
-  if ((keycode == LT(1,KC_SPACE)) && mac_mode == false) {
+  if ((keycode == LT(2, KC_ENTER)) && mac_mode == false) {
     if (record->event.pressed) {
       if (record->tap.count > 0 && !record->tap.interrupted) {
-        if (keycode == LT(1,KC_SPACE)) {
-          tap_code(KC_SPACE);
-        } else {
-          return false;
-        }
+        tap_code(KC_ENTER);
       } else {
-        layer_on(keycode == LT(1,KC_SPACE) ? 4 : 5);
+        layer_on(5);
       }
     } else {
-      layer_off(keycode == LT(1,KC_SPACE) ? 4 : 5);
+      layer_off(5);
     }
     return false;
   }
