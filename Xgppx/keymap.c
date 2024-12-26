@@ -88,23 +88,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 extern rgb_config_t rgb_matrix_config;
-
-void keyboard_post_init_user(void) {
-    os_variant_t os = detected_host_os();
-    if (os == OS_MACOS) {
-        layer_off(3);
-        layer_off(4);
-        layer_off(5);
-        layer_on(0);
-        rgb_matrix_set_color(23, 255, 0, 0); // Set MAC_WIN_TOGGLE to red
-        } else {
-        layer_off(0);
-        layer_off(1);
-        layer_off(2);
-        layer_on(3);
-        rgb_matrix_set_color(23, 0, 128, 0); // Set MAC_WIN_TOGGLE to red
+bool process_detected_host_os_kb(os_variant_t detected_os) {
+    if (!process_detected_host_os_user(detected_os)) {
+        return false;
     }
-  rgb_matrix_enable();
+    switch (detected_os) {
+        case OS_MACOS || OS_LINUX:
+            layer_off(3);
+            layer_off(4);
+            layer_off(5);
+            layer_on(0);
+            rgb_matrix_set_color(23, 255, 0, 0); // Set MAC_WIN_TOGGLE to red
+            break;
+        case OS_WINDOWS:
+            layer_off(0);
+            layer_off(1);
+            layer_off(2);
+            layer_on(3);
+            rgb_matrix_set_color(23, 0, 128, 0); // Set MAC_WIN_TOGGLE to green
+            break;
+        case OS_UNSURE:
+            layer_off(3);
+            layer_off(4);
+            layer_off(5);
+            layer_on(0);
+            rgb_matrix_set_color(23, 51, 0, 0); // Set MAC_WIN_TOGGLE to red
+            break;
+    }
+    
+    return true;
 }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
