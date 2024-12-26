@@ -90,6 +90,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 extern rgb_config_t rgb_matrix_config;
 
 void keyboard_post_init_user(void) {
+    os_variant_t os = detected_host_os();
+    if (os == OS_MACOS) {
+        layer_off(3);
+        layer_off(4);
+        layer_off(5);
+        layer_on(0);
+        rgb_matrix_set_color(23, 255, 0, 0); // Set MAC_WIN_TOGGLE to red
+        } else {
+        layer_off(0);
+        layer_off(1);
+        layer_off(2);
+        layer_on(3);
+        rgb_matrix_set_color(23, 0, 128, 0); // Set MAC_WIN_TOGGLE to red
+    }
   rgb_matrix_enable();
 }
 
@@ -157,22 +171,6 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-void keyboard_post_init_user(void) {
-    os_variant_t os = detected_host_os();
-    if (os == OS_MACOS) {
-        layer_off(3);
-        layer_off(4);
-        layer_off(5);
-        layer_on(0);
-        rgb_matrix_set_color(23, 255, 0, 0); // Set MAC_WIN_TOGGLE to red
-        } else {
-        layer_off(0);
-        layer_off(1);
-        layer_off(2);
-        layer_on(3);
-        rgb_matrix_set_color(23, 0, 128, 0); // Set MAC_WIN_TOGGLE to red
-    }
-}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     os_variant_t os = detected_host_os();
