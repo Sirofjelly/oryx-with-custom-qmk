@@ -93,7 +93,21 @@ bool process_detected_host_os_kb(os_variant_t detected_os) {
         return false;
     }
     switch (detected_os) {
-        case OS_MACOS || OS_LINUX:
+        case OS_MACOS:
+            layer_off(3);
+            layer_off(4);
+            layer_off(5);
+            layer_on(0);
+            rgb_matrix_set_color(23, 255, 0, 0); // Set MAC_WIN_TOGGLE to red
+            break;
+        case OS_IOS:
+            layer_off(3);
+            layer_off(4);
+            layer_off(5);
+            layer_on(0);
+            rgb_matrix_set_color(23, 255, 0, 0); // Set MAC_WIN_TOGGLE to red
+            break;
+        case OS_LINUX:
             layer_off(3);
             layer_off(4);
             layer_off(5);
