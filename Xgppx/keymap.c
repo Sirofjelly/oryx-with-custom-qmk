@@ -5,6 +5,7 @@
 #include "os_detection.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
+#define DEBUG_ENABLE
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
