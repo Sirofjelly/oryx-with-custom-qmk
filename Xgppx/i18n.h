@@ -1,7 +1,6 @@
 #define CH_LESS KC_NUBS
 #define CH_MORE S(KC_NUBS)
 #define CH_Y KC_Z
-#define CH_GRV S(KC_EQL)
 #define CH_Z KC_Y
 #define CH_AE KC_QUOT
 #define CH_OE KC_SCLN
