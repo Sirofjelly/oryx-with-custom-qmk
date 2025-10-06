@@ -108,6 +108,7 @@ RGB hsv_to_rgb_with_value(HSV hsv) {
   float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
   return (RGB){ f * rgb.r, f * rgb.g, f * rgb.b };
 }
+
 bool process_detected_host_os_kb(os_variant_t detected_os) {
     if (!process_detected_host_os_user(detected_os)) {
         return false;
@@ -149,7 +150,7 @@ bool process_detected_host_os_kb(os_variant_t detected_os) {
             rgb_matrix_set_color(23, 51, 0, 0); // Set MAC_WIN_TOGGLE to red
             break;
     }
-    
+
     return true;
 }
 
