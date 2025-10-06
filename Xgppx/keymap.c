@@ -23,11 +23,9 @@ enum custom_keycodes {
   NAVIGATOR_INC_CPI,
   NAVIGATOR_DEC_CPI,
   NAVIGATOR_TURBO,
-  NAVIGATOR_AIM
+  NAVIGATOR_AIM,
   DYNAMIC_MACRO_RANGE
 };
-
-
 
 enum tap_dance_codes {
   DANCE_0,
@@ -153,6 +151,10 @@ bool process_detected_host_os_kb(os_variant_t detected_os) {
     }
     
     return true;
+}
+
+void keyboard_post_init_user(void) {
+  rgb_matrix_enable();
 }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
